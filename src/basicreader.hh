@@ -1,7 +1,8 @@
 #ifndef BASICREADER_HH_ 
 #define BASICREADER_HH_
 
-#include "threadpool/threadpool.hpp"
+#include <atomic>
+#include "threadpool.hpp"
 #include "define.hh"
 
 class BasicReader {
@@ -9,9 +10,11 @@ class BasicReader {
         BasicReader();
         ~BasicReader();
 
-        int read();
+        int read(int num_of_threads_to_issue);
     private:
+        void doRead(int dummy_parameter, std::atomic_int& readCount);
         boost::threadpool::pool _readtp;
+
 };
 
 #endif
