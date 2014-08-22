@@ -1,0 +1,3 @@
+#define NUM_READ_THREAD 4
+
+#define NUM_WRITE_THREAD 4
